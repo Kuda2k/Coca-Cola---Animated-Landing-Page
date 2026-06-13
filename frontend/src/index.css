@@ -1,12 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-coca-red: #F40009;
+  --color-coca-black: #000000;
+  --color-coca-white: #FFFFFF;
+}
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-coca-black text-coca-white font-sans;
+    background-color: var(--color-coca-black);
+    color: var(--color-coca-white);
   }
 }
