@@ -1,6 +1,6 @@
 Este documento contiene las reglas técnicas obligatorias para el manejo de assets de IA y la generación de código. Léelo antes de empezar a programar o generar videos.
 
-📂 Estructura de Carpetas Obligatoria
+Estructura de Carpetas Obligatoria
 Para que la IA de programación sepa exactamente dónde está cada asset y componente, mantengamos este orden estricto dentro de /frontend/src:
 
 Plaintext
@@ -28,7 +28,7 @@ Peso: Cada archivo .mp4 debe pesar menos de 10MB. Si pesa más, pásalo por un c
 
 Framerate: Exportar estrictamente a 30fps o 60fps constantes. Si el framerate es variable, el scroll dará saltos feos.
 
-🤖 ¿Cómo pedirle el código a la IA? (Prompt Base)
+¿Cómo pedirle el código a la IA? (Prompt Base)
 Cuando le pidan a la IA que programe un componente de scroll, usen este prompt base para que no intente usar librerías incorrectas:
 
 "Estoy usando React, TypeScript, Vite y Tailwind CSS. Necesito crear un componente que reproduzca un video local (.mp4) frame por frame sincronizado con el scroll del usuario usando GSAP y ScrollTrigger. El video debe avanzar cuando bajo y retroceder cuando subo. Asegúrate de limpiar los listeners de GSAP en el desmontaje del componente con gsap.context() y añade un contenedor de scroll con la altura suficiente para que la animación se note."
