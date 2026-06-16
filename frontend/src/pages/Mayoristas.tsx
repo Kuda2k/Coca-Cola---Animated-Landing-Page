@@ -1,8 +1,12 @@
-import { useState, useEffect, useRef, useId } from 'react';
+import React, { useState, useEffect, useRef, useId } from 'react';
 import imgMayoristas from '../assets/coca_cola_mayoristas.png';
 import imgComunidad from '../assets/coca_cola_comunidad.png';
-import imgCombo from '../assets/coca_cola_combo_promo.png';
 import logo from '../assets/logo2.png';
+
+import imgPromoPack from '../assets/promo_pack.png';
+import imgPromoCombo from '../assets/promo_combo.png';
+import imgPromoCooler from '../assets/promo_cooler.png';
+import imgPromoPoints from '../assets/promo_points.png';
 
 // --- SVGs DE REFERENCIA (FONDOS) ---
 const StarSilhouette = ({ fill }: { fill: string }) => (
@@ -120,7 +124,7 @@ const WorldCupSection = () => {
   const x = progress * 130 - 15; // Inicia en -15vw y termina en 115vw
   
   // Rebotes (Y axis)
-  let heightOffset = 0;
+  let heightOffset;
   if (progress < 0.2) {
     const p = progress / 0.2;
     heightOffset = (1 - p * p) * 50; // Caída libre
@@ -213,16 +217,22 @@ const FlagsCarousel = () => (
       </h3>
       
       {/* Carrusel Seamless (Dos sets idénticos moviéndose) */}
-      <div className="flex animate-[marquee_20s_linear_infinite] w-max">
-        <div className="flex gap-8 px-4">
-          {flags.map((flag, idx) => (
-            <FlagCard key={idx} country={flag.country} colors={flag.colors} dir={flag.dir} />
-          ))}
-        </div>
-        <div className="flex gap-8 px-4">
-          {flags.map((flag, idx) => (
-            <FlagCard key={idx} country={flag.country} colors={flag.colors} dir={flag.dir} />
-          ))}
+      <div className="w-full overflow-hidden flex justify-start">
+        <div className="flex animate-[marquee_20s_linear_infinite] w-max">
+          <div className="flex gap-8 px-4">
+            {flags.map((flag, idx) => (
+              <React.Fragment key={idx}>
+                <FlagCard country={flag.country} colors={flag.colors} dir={flag.dir} />
+              </React.Fragment>
+            ))}
+          </div>
+          <div className="flex gap-8 px-4">
+            {flags.map((flag, idx) => (
+              <React.Fragment key={idx}>
+                <FlagCard country={flag.country} colors={flag.colors} dir={flag.dir} />
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -231,10 +241,10 @@ const FlagsCarousel = () => (
 
 // --- DATA ---
 const promos = [
-  { id: 1, title: 'Pack Mundialista', desc: 'Lleva 5 cajas de Coca-Cola Original y obtén merchandising oficial del mundial para tu tienda.', discount: '15%' },
-  { id: 2, title: 'Combo Refrescante', desc: 'Mix de Coca-Cola Zero y Original. Ideal para el verano y las previas de los partidos.', discount: '20%' },
-  { id: 3, title: 'Equipa tu Bodega', desc: 'En pedidos mayores a 10 cajas, llévate un cooler exhibidor iluminado gratis.', discount: 'GRATIS' },
-  { id: 4, title: 'Doble Puntaje', desc: 'Acumula doble puntaje en el programa de socios por cada pedido realizado durante el mundial.', discount: 'X2' },
+  { id: 1, title: 'Pack Mundialista', desc: 'Lleva 5 cajas de Coca-Cola Original y obtén merchandising oficial del mundial para tu tienda.', discount: '15%', image: imgPromoPack },
+  { id: 2, title: 'Combo Refrescante', desc: 'Mix de Coca-Cola Zero y Original. Ideal para el verano y las previas de los partidos.', discount: '20%', image: imgPromoCombo },
+  { id: 3, title: 'Equipa tu Bodega', desc: 'En pedidos mayores a 10 cajas, llévate un cooler exhibidor iluminado gratis.', discount: 'GRATIS', image: imgPromoCooler },
+  { id: 4, title: 'Doble Puntaje', desc: 'Acumula doble puntaje en el programa de socios por cada pedido realizado durante el mundial.', discount: 'X2', image: imgPromoPoints },
 ];
 
 const testimonials = [
@@ -248,6 +258,7 @@ export interface Promo {
   title: string;
   desc: string;
   discount: string;
+  image: string;
 }
 
 export default function Mayoristas() {
@@ -393,7 +404,7 @@ export default function Mayoristas() {
 
             <div className="relative z-10 flex flex-col items-center text-center">
               <div className="w-full h-56 rounded-2xl overflow-hidden border border-white/20 mb-6 shadow-[0_10px_20px_rgba(0,0,0,0.5)] relative group">
-                <img src={imgCombo} alt="Combo Promocional" className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" />
+                <img src={activeModal.image} alt={activeModal.title} className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
                 <div className="absolute bottom-4 left-0 w-full flex justify-center">
                   <div className="inline-block bg-coca-red text-white font-black text-4xl px-8 py-2 rounded-2xl shadow-[0_0_15px_rgba(244,0,9,0.8)] border border-red-500/50 backdrop-blur-md">
