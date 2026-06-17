@@ -3,11 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - Coca-Cola</title>
-    <link rel="stylesheet" href="./Productos.css">
+    <title>Productos Coca-Cola</title>
+    <!-- Vinculamos tu archivo CSS externo -->
+    <link rel="stylesheet" href="Productos.css">
 </head>
 <body>
-    <!-- Aquí tu compañero puede continuar con la programación de la sección de productos -->
-    <h1>Productos</h1>
+
+    <!-- Barra de navegación con logo y botón regresar -->
+    <div class="barra-navegacion">
+        <div class="marca-logo">Coca-Cola</div>
+        <button class="btn-regresar" id="btn-regresar">← Atrás</button>
+    </div>
+
+    <!-- Buscador integrado -->
+    <div class="contenedor-buscador">
+        <input type="text" id="buscador" placeholder="Buscar producto...">
+    </div>
+
+    <!-- Rejilla de productos -->
+    <div class="contenedor">
+
+        <!-- Producto 1: Sabor Original -->
+        <article class="producto">
+            <div class="producto-img">
+                <img src="imagenes/original.png" alt="Coca-Cola Sabor Original" class="botella-img visible">
+            </div>
+            <div class="producto-info">
+                <div>
+                    <h2>Coca-Cola Sabor Original</h2>
+                    <p>La bebida gaseosa favorita del mundo que se ha disfrutado desde 1886. Puedes encontrarla en presentaciones para cada ocasión.</p>
+                </div>
+                <button class="btn-info">Ver Información Nutricional</button>
+                
+                <!-- Datos ocultos que leerá el script -->
+                <div class="datos-nutricionales" style="display: none;">
+                    <table>
+                        <thead>
+                            <tr><th>Nutriente (Porción 250ml)</th><th>Cantidad</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Valor Energético</td><td>105 kcal</td></tr>
+                            <tr><td>Grasas Totales</td><td>0 g</td></tr>
+                            <tr><td>Sodio</td><td>25 mg</td></tr>
+                            <tr><td>Carbohidratos Totales</td><td>27 g</td></tr>
+                            <tr><td>Azúcares Totales</td><td>27 g</td></tr>
+                            <tr><td>Proteínas</td><td>0 g</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="lista-ingredientes">
+                        <h3>Ingredientes:</h3>
+                        <p>Agua carbonatada, azúcares (jarabe de maíz de alta fructosa y/o sacarosa), colorante caramelo clase IV, acidulante (ácido fosfórico) y aromatizantes naturales (contiene cafeína).</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Producto 2: Menos Azúcar -->
+        <article class="producto">
+            <div class="producto-img">
+                <img src="imagenes/menos-azucar.png" alt="Coca-Cola Sabor Original Menos Azúcar" class="botella-img visible">
+            </div>
+            <div class="producto-info">
+                <div>
+                    <h2>Coca-Cola Sabor Original Menos Azúcar</h2>
+                    <p>Disfruta del inconfundible sabor original de Coca-Cola pero con menos azúcar, en una variedad de presentaciones que se adaptan a cada estilo de vida.</p>
+                </div>
+                <button class="btn-info">Ver Información Nutricional</button>
+                
+                <!-- Datos ocultos que leerá el script -->
+                <div class="datos-nutricionales" style="display: none;">
+                    <table>
+                        <thead>
+                            <tr><th>Nutriente (Porción 250ml)</th><th>Cantidad</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Valor Energético</td><td>50 kcal</td></tr>
+                            <tr><td>Grasas Totales</td><td>0 g</td></tr>
+                            <tr><td>Sodio</td><td>25 mg</td></tr>
+                            <tr><td>Carbohidratos Totales</td><td>12.5 g</td></tr>
+                            <tr><td>Azúcares Totales</td><td>12.5 g</td></tr>
+                            <tr><td>Proteínas</td><td>0 g</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="lista-ingredientes">
+                        <h3>Ingredientes:</h3>
+                        <p>Agua carbonatada, azúcares (jarabe de maíz de alta fructosa y/o sacarosa), colorante caramelo clase IV, acidulante (ácido fosfórico), aromatizantes naturales (contiene cafeína) and edulcorantes (sucralosa y acesulfame de potasio).</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Producto 3: Sin Azúcar -->
+        <article class="producto">
+            <div class="producto-img">
+                <img src="imagenes/sin-azucar.png" alt="Coca-Cola Sin Azúcar" class="botella-img visible">
+            </div>
+            <div class="producto-info">
+                <div>
+                    <h2>Coca-Cola Sin Azúcar</h2>
+                    <p>Disfruta del auténtico sabor de Coca-Cola, ahora sin azúcar, con la misma frescura inconfundible y el delicioso sabor que tanto te gusta.</p>
+                </div>
+                <button class="btn-info">Ver Información Nutricional</button>
+                
+                <!-- Datos ocultos que leerá el script -->
+                <div class="datos-nutricionales" style="display: none;">
+                    <table>
+                        <thead>
+                            <tr><th>Nutriente (Porción 250ml)</th><th>Cantidad</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Valor Energético</td><td>0 kcal</td></tr>
+                            <tr><td>Grasas Totales</td><td>0 g</td></tr>
+                            <tr><td>Sodio</td><td>30 mg</td></tr>
+                            <tr><td>Carbohidratos Totales</td><td>0 g</td></tr>
+                            <tr><td>Azúcares Totales</td><td>0 g</td></tr>
+                            <tr><td>Proteínas</td><td>0 g</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="lista-ingredientes">
+                        <h3>Ingredientes:</h3>
+                        <p>Agua carbonatada, colorante caramelo clase IV, acidulantes (ácido fosfórico y citrato de sodio), aromatizantes naturales, edulcorantes (aspartame y acesulfame de potasio) y regulador de acidez (contiene cafeína y fenilalanina).</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- Estructura del Modal (ERROR DE ID CORREGIDO AQUÍ) -->
+    <div id="nutricion-modal" class="modal">
+        <div class="modal-content">
+            <span class="cerrar-modal" id="cerrar-modal">&times;</span>
+            <h2>Detalles del Producto</h2>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Botón flotante para subir -->
+    <button id="btn-top">↑</button>
+
+    <!-- Vinculamos tu archivo JavaScript externo -->
+    <script src="script.js"></script>
 </body>
 </html>

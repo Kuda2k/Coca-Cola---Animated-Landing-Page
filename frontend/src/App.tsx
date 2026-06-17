@@ -1,5 +1,9 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 import Home from './pages/Home';
 import Experiencia from './pages/Experiencia';
 import Mayoristas from './pages/Mayoristas';
@@ -8,7 +12,18 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // 1. Limpiar todos los ScrollTriggers "huérfanos" para evitar que bloqueen el DOM
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    
+    // 2. Posicionarse en la parte superior
     window.scrollTo(0, 0);
+
+    // 3. Recalcular GSAP después de que el nuevo DOM se haya montado
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return null;

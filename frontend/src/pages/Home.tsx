@@ -12,6 +12,7 @@ const FRAME_COUNT = 146;
 const FRAME_PATH = '/frames/coca-zero/';
 
 export default function Home() {
+  const mainRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
@@ -143,7 +144,7 @@ export default function Home() {
         }, 0);
       }
 
-    }, scrollContainerRef); // ← Fix: solo un ref como scope
+    }, mainRef); // ← Fix: usar mainRef que engloba TODA la página para limpiar correctamente TODOS los ScrollTriggers
 
     const handleResize = () => {
       renderFrame(Math.round(frameIndexRef.current.value));
@@ -157,7 +158,7 @@ export default function Home() {
   }, [renderFrame]);
 
   return (
-    <>
+    <div ref={mainRef}>
       {/* Hero Section */}
       <section
         id="hero"
@@ -249,13 +250,11 @@ export default function Home() {
           {/* Handle — Fix: quitamos el translateX del style inline, GSAP lo maneja */}
           <div
             ref={handleRef}
-            className="absolute top-0 bottom-0 w-1 bg-white z-20 flex items-center justify-center"
+            className="absolute top-0 bottom-0 w-1 bg-white z-20 flex items-center justify-center drop-shadow-xl"
             style={{ left: '0%' }}
           >
-            <div className="w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-between px-2 text-black border border-gray-300 pointer-events-none">
-              <span className="font-bold text-xs">◀</span>
-              <span className="font-bold text-xs">▶</span>
-            </div>
+            {/* Manija limpia, sin emojis innecesarios */}
+            <div className="w-8 h-8 bg-white rounded-full shadow-[0_0_15px_rgba(0,0,0,0.5)] border-2 border-gray-100 pointer-events-none" />
           </div>
         </div>
 
@@ -300,6 +299,6 @@ export default function Home() {
           </form>
         </div>
       </section>
-    </>
+    </div>
   );
 }
